@@ -35,7 +35,7 @@ Use `-Recurse` to include XML files in subdirectories:
 
 ## Input
 
-XML files must contain data supported by the converter. Add a description here of the required root element, records, and fields.
+XML files must contain data supported by the converter.
 
 ## Output
 
