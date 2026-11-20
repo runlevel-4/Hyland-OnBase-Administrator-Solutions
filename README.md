@@ -7,7 +7,7 @@ A collection of SQL scripts and Windows PowerShell solutions for Hyland OnBase a
 - **SQL** — Queries and scripts for administering and troubleshooting OnBase databases
 - **PowerShell** — Automation and administration scripts for Windows environments
 
-> Update this section as solutions are added to the repository.
+> I will update this section as solutions are added to the repository.
 
 ## Requirements
 
