@@ -1,53 +1,20 @@
-# PowerShell XML to CSV Converter
+# SQL XML Data Export
 
-A PowerShell utility that processes one or more XML files and exports their contents into a CSV file.
+This PowerShell script gathers document records from SQL Server, then processes the files identified by those records.
 
-## Prerequisites
+## What the script does
 
-- Windows PowerShell 5.1 or PowerShell 7+
-- Read access to the XML source directory
-- Write access to the CSV destination directory
+1. Runs the configured SQL query to retrieve document records, including each file's path and filename.
+2. Loops through the returned records and checks each file's type.
+3. Extracts data from XML files and adds it to the CSV output.
+4. Copies non-XML files to the configured additional-files output directory.
 
-## Usage
+## Run the script
 
-```powershell
-.\Convert-XmlToCsv.ps1 `
-    -Path ".\input" `
-    -OutputFile ".\output\converted.csv"
-```
-
-Use `-Recurse` to include XML files in subdirectories:
+Configure the SQL connection, query, and output paths in `sql_to_xml_to_csv.ps1`, then run it from PowerShell:
 
 ```powershell
-.\Convert-XmlToCsv.ps1 `
-    -Path ".\input" `
-    -OutputFile ".\output\converted.csv" `
-    -Recurse
+.\sql_to_xml_to_csv.ps1
 ```
 
-## Parameters
-
-| Parameter | Description |
-| --- | --- |
-| `Path` | XML file or directory to process. |
-| `OutputFile` | Destination CSV file. |
-| `Recurse` | Optional. Searches subdirectories for XML files. |
-
-## Input
-
-XML files must contain data supported by the converter.
-
-## Output
-
-The generated CSV contains one row per XML record. Column names are derived from the XML structure or configured field mappings.
-
-## Troubleshooting
-
-- **Script cannot run:** Check the PowerShell execution policy.
-- **XML parsing fails:** Validate the file's XML structure.
-- **CSV is missing rows:** Confirm that the XPath or XML element names match the input.
-- **File is locked:** Close the destination CSV before running the script.
-
-## Contributing
-
-Contributions should include updated documentation and a sample XML file when changing the conversion behavior.
+The script writes the XML data to `xml_contracts.csv` in the configured output directory and copies other files to the configured additional-files directory.
